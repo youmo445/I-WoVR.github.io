@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="I-WoVR: VLA-Interface-Aligned World Models for Reliable Closed-Loop Reinforcement Learning. Real-world autonomous execution and recovery.">
+  <meta name="theme-color" content="#1e3a8a">
+  <title>I-WoVR: VLA-Interface-Aligned World Models for Reliable Closed-Loop Reinforcement Learning</title>
+  <!-- RISE's current official stylesheet, preserved without modification. -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/project.css">
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/real-robot-chart.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#execution">Skip to robot demonstrations</a>
+  <div class="progress" id="reading-progress"></div>
+  <div class="topbar">
+    <div class="container"><div class="row">
+      <a class="brand" href="#top" aria-label="I-WoVR home">I-WoVR</a>
+      <nav class="nav" aria-label="Page sections">
+        <a class="nav-link" href="#execution">Demos</a>
+        <a class="nav-link" href="#overview">Intro</a>
+        <a class="nav-link" href="#framework">From WoVR</a>
+        <a class="nav-link" href="#method">Method</a>
+        <a class="nav-link" href="#results">Results</a>
+        <a class="nav-link" href="#abstract">Abstract</a>
+      </nav>
+      <div class="spacer"></div>
+    </div></div>
+  </div>
+  <header class="hero-video" id="top" aria-labelledby="paper-title">
+    <div class="hero-dim"></div>
+    <video id="hero-video" poster="assets/media/hero.jpg" src="assets/media/hero.mp4" autoplay muted loop playsinline preload="auto" aria-label="Three camera views of successful phone packaging"></video>
+    <div class="hero-overlay"><div class="hero-overlay-inner">
+      <div class="hero-title" id="paper-title" role="heading" aria-level="1">I-WoVR: VLA-Interface-Aligned World Models for Reliable Closed-Loop Reinforcement Learning</div>
+    </div></div>
+    <a class="scrollhint" href="#execution" aria-label="Scroll to real-world demonstrations"><span>Scroll</span><span class="chevdown" aria-hidden="true"></span></a>
+  </header>
+  <main class="container mainwrap">
+    <section id="execution" aria-labelledby="execution-title">
+      <h2 id="execution-title">Real-World Autonomous Execution</h2>
+      <p class="small playback-note">Videos shown at 2× speed.</p>
+      <article class="task-comparison" id="towel" aria-labelledby="towel-title">
+        <h3 id="towel-title">Towel Folding</h3>
+        <div class="grid2">
+          <div>
+            <div class="clip-label">I-WoVR</div>
+            <div class="media video-frame"><video class="demo-video" id="towel-success-video" data-src="assets/media/towel-success.mp4" poster="assets/media/towel-success.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Towel Folding — I-WoVR"></video><button class="expand-button" data-expand="towel-success-video" aria-label="Enlarge Towel Folding — I-WoVR" type="button">⤢</button></div>
+          </div>
+          <div>
+            <div class="clip-label">SFT</div>
+            <div class="media video-frame"><video class="demo-video" id="towel-failure-video" data-src="assets/media/towel-sft-02.mp4" poster="assets/media/towel-sft-02.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Towel Folding — SFT"></video><button class="expand-button" data-expand="towel-failure-video" aria-label="Enlarge Towel Folding — SFT" type="button">⤢</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="task-comparison" id="flowers" aria-labelledby="flowers-title">
+        <h3 id="flowers-title">Flower Insertion</h3>
+        <div class="grid2">
+          <div>
+            <div class="clip-label">I-WoVR</div>
+            <div class="media video-frame"><video class="demo-video" id="flowers-success-video" data-src="assets/media/flowers-success-003.mp4" poster="assets/media/flowers-success-003.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Flower Insertion — I-WoVR"></video><button class="expand-button" data-expand="flowers-success-video" aria-label="Enlarge Flower Insertion — I-WoVR" type="button">⤢</button></div>
+          </div>
+          <div>
+            <div class="clip-label">SFT</div>
+            <div class="media video-frame"><video class="demo-video" id="flowers-failure-video" data-src="assets/media/flowers-sft-003.mp4" poster="assets/media/flowers-sft-003.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Flower Insertion — SFT"></video><button class="expand-button" data-expand="flowers-failure-video" aria-label="Enlarge Flower Insertion — SFT" type="button">⤢</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="task-comparison" id="cups" aria-labelledby="cups-title">
+        <h3 id="cups-title">Paper Cup Stacking</h3>
+        <div class="grid2">
+          <div>
+            <div class="clip-label">I-WoVR</div>
+            <div class="media video-frame"><video class="demo-video" id="cups-success-video" data-src="assets/media/cups-success-021.mp4" poster="assets/media/cups-success-021.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Paper Cup Stacking — I-WoVR"></video><button class="expand-button" data-expand="cups-success-video" aria-label="Enlarge Paper Cup Stacking — I-WoVR" type="button">⤢</button></div>
+          </div>
+          <div>
+            <div class="clip-label">SFT</div>
+            <div class="media video-frame"><video class="demo-video" id="cups-failure-video" data-src="assets/media/cups-sft-020.mp4" poster="assets/media/cups-sft-020.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Paper Cup Stacking — SFT"></video><button class="expand-button" data-expand="cups-failure-video" aria-label="Enlarge Paper Cup Stacking — SFT" type="button">⤢</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="task-comparison" id="bottle" aria-labelledby="bottle-title">
+        <h3 id="bottle-title">Bottle Uprighting</h3>
+        <div class="grid2">
+          <div>
+            <div class="clip-label">I-WoVR</div>
+            <div class="media video-frame"><video class="demo-video" id="bottle-success-video" data-src="assets/media/bottle-success-016.mp4" poster="assets/media/bottle-success-016.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Bottle Uprighting — I-WoVR"></video><button class="expand-button" data-expand="bottle-success-video" aria-label="Enlarge Bottle Uprighting — I-WoVR" type="button">⤢</button></div>
+          </div>
+          <div>
+            <div class="clip-label">SFT</div>
+            <div class="media video-frame"><video class="demo-video" id="bottle-failure-video" data-src="assets/media/bottle-sft-016.mp4" poster="assets/media/bottle-sft-016.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Bottle Uprighting — SFT"></video><button class="expand-button" data-expand="bottle-failure-video" aria-label="Enlarge Bottle Uprighting — SFT" type="button">⤢</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="task-comparison" id="button" aria-labelledby="button-title">
+        <h3 id="button-title">Button Pressing</h3>
+        <div class="grid2">
+          <div>
+            <div class="clip-label">I-WoVR</div>
+            <div class="media video-frame"><video class="demo-video" id="button-success-video" data-src="assets/media/button-success-003.mp4" poster="assets/media/button-success-003.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Button Pressing — I-WoVR"></video><button class="expand-button" data-expand="button-success-video" aria-label="Enlarge Button Pressing — I-WoVR" type="button">⤢</button></div>
+          </div>
+          <div>
+            <div class="clip-label">SFT</div>
+            <div class="media video-frame"><video class="demo-video" id="button-failure-video" data-src="assets/media/button-sft-003.mp4" poster="assets/media/button-sft-003.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Button Pressing — SFT"></video><button class="expand-button" data-expand="button-failure-video" aria-label="Enlarge Button Pressing — SFT" type="button">⤢</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="task-comparison" id="tubes" aria-labelledby="tubes-title">
+        <h3 id="tubes-title">Test-Tube Transfer</h3>
+        <div class="grid2">
+          <div>
+            <div class="clip-label">I-WoVR</div>
+            <div class="media video-frame"><video class="demo-video" id="tubes-success-video" data-src="assets/media/tubes-success-002.mp4" poster="assets/media/tubes-success-002.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Test-Tube Transfer — I-WoVR"></video><button class="expand-button" data-expand="tubes-success-video" aria-label="Enlarge Test-Tube Transfer — I-WoVR" type="button">⤢</button></div>
+          </div>
+          <div>
+            <div class="clip-label">SFT</div>
+            <div class="media video-frame"><video class="demo-video" id="tubes-failure-video" data-src="assets/media/tubes-sft-002.mp4" poster="assets/media/tubes-sft-002.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Test-Tube Transfer — SFT"></video><button class="expand-button" data-expand="tubes-failure-video" aria-label="Enlarge Test-Tube Transfer — SFT" type="button">⤢</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="task-comparison" id="phone" aria-labelledby="phone-title">
+        <h3 id="phone-title">Long-Horizon Phone Packaging</h3>
+        <div class="grid2">
+          <div>
+            <div class="clip-label">I-WoVR</div>
+            <div class="media video-frame"><video class="demo-video" id="phone-success-video" data-src="assets/media/success.mp4" poster="assets/media/success.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Long-Horizon Phone Packaging — I-WoVR"></video><button class="expand-button" data-expand="phone-success-video" aria-label="Enlarge Long-Horizon Phone Packaging — I-WoVR" type="button">⤢</button></div>
+          </div>
+          <div>
+            <div class="clip-label">SFT</div>
+            <div class="media video-frame"><video class="demo-video" id="phone-failure-video" data-src="assets/media/sft-placement.mp4" poster="assets/media/sft-placement.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Long-Horizon Phone Packaging — SFT"></video><button class="expand-button" data-expand="phone-failure-video" aria-label="Enlarge Long-Horizon Phone Packaging — SFT" type="button">⤢</button></div>
+          </div>
+        </div>
+      </article>
+      <hr>
+      <div id="recovery">
+        <h3>Recovery &amp; Self-Correction</h3>
+        <div class="recovery-single">
+          <div class="media video-frame"><video class="demo-video" id="recovery-01-video" data-src="assets/media/recovery-01.mp4" poster="assets/media/recovery-01.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Phone packaging — recovery"></video><button class="expand-button" data-expand="recovery-01-video" aria-label="Enlarge Phone packaging — recovery" type="button">⤢</button></div>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <section id="overview" aria-labelledby="overview-title">
+      <h2 id="overview-title">Intro</h2>
+      <h3>A Shared Core Claim</h3>
+      <p>I-WoVR retains WoVR’s core premise: <strong>controlling hallucination enables reliable policy optimization in imagination.</strong></p>
+      <figure class="paper-figure core-claim-figure">
+        <a href="assets/figures/shared-core-claim.png" target="_blank" rel="noopener" aria-label="Open Hallucinated success in a world model versus failure in real-world execution at full resolution"><img src="assets/figures/shared-core-claim.png" alt="Hallucinated success in a world model versus failure in real-world execution" width="2380" height="1820" loading="lazy" decoding="async"></a>
+      </figure>
+      <p>ACWMs may generate visually plausible yet physically incorrect rollouts, resulting in spurious success signals under the policy’s actions.</p>
+      <p class="core-question">If world models inevitably hallucinate, how can RL remain reliable under imperfect imagined dynamics?</p>
+
+      <h3>Additional Challenges in a Broader Setting</h3>
+      <div class="challenge-grid" role="group" aria-label="From WoVR’s single-view setting to I-WoVR’s multi-view, long-horizon setting">
+        <figure class="challenge-panel">
+          <figcaption>WoVR</figcaption>
+          <a href="assets/figures/challenge-single-view.png" target="_blank" rel="noopener" aria-label="Open WoVR: single-view VLA with end-effector actions at full resolution"><img src="assets/figures/challenge-single-view.png" alt="WoVR: single-view VLA with end-effector actions" width="1050" height="1302" loading="lazy" decoding="async"></a>
+        </figure>
+        <div class="challenge-transition" aria-hidden="true"><span>→</span><small>A broader<br>interaction setting</small></div>
+        <figure class="challenge-panel">
+          <figcaption>I-WoVR</figcaption>
+          <a href="assets/figures/challenge-multi-view.png" target="_blank" rel="noopener" aria-label="Open I-WoVR: multi-view observations, proprioception, joint actions, and long-horizon manipulation at full resolution"><img src="assets/figures/challenge-multi-view.png" alt="I-WoVR: multi-view observations, proprioception, joint actions, and long-horizon manipulation" width="1050" height="1296" loading="lazy" decoding="async"></a>
+        </figure>
+      </div>
+      <p>Extending the same hallucination-aware framework to modern VLAs requires synchronized head and wrist observations, proprioceptive feedback, and absolute joint actions. Longer tasks also require localized rewards and explicit control over how training opportunities are allocated across stages.</p>
+
+      <h3>Contributions</h3>
+      <div class="contrib-cards">
+        <div class="contrib-card"><div class="contrib-content"><strong class="highlight">A VLA-aligned multi-view world model.</strong> Geometry-grounded action and camera conditioning, anchored sparse history, and command-based proprioceptive updates support reliable closed-loop interaction.</div></div>
+        <div class="contrib-card"><div class="contrib-content"><strong class="highlight">Temporally coherent exploration.</strong> Chunk-wise Flow-SDE noise suppresses high-frequency action fluctuations while preserving the marginal exploration scale.</div></div>
+        <div class="contrib-card"><div class="contrib-content"><strong class="highlight">Stage-local imagined training.</strong> Stage-entry resets, stage-specific rewards, local horizons, and controllable stage sampling extend reliable local imagination to long-horizon manipulation.</div></div>
+      </div>
+    </section>
+    <hr>
+    <section id="framework" aria-labelledby="framework-title">
+      <h2 id="framework-title">From WoVR to I-WoVR</h2>
+      <h3>WoVR: The Shared WM-RL Framework</h3>
+      <p>WoVR treats the world model as a generative simulator and controls hallucination at three complementary levels: simulator-level control, interaction-level reshaping, and policy-model alignment.</p>
+      <figure class="paper-figure">
+        <a href="assets/figures/wovr-framework.png" target="_blank" rel="noopener" aria-label="Open WoVR framework: stabilized world model, hallucination-aware policy optimization, and policy-aligned co-evolution at full resolution"><img src="assets/figures/wovr-framework.png" alt="WoVR framework: stabilized world model, hallucination-aware policy optimization, and policy-aligned co-evolution" width="3657" height="2084" loading="lazy" decoding="async"></a>
+      </figure>
+
+      <h3>Extensions and Scope</h3>
+      <p>I-WoVR preserves this reliability-oriented framework while redesigning its learned environment, exploration, and imagined interaction protocol for multi-view VLA policies and long-horizon, multi-stage manipulation.</p>
+      <div class="extension-diagrams">
+        <figure class="paper-figure">
+          <figcaption>Vanilla WM-RL with a Flow-Based VLA</figcaption>
+          <a href="assets/figures/extensions-vanilla.png" target="_blank" rel="noopener" aria-label="Open Vanilla WM-RL: incoherent exploration, interface mismatch, and long-rollout errors at full resolution"><img src="assets/figures/extensions-vanilla.png" alt="Vanilla WM-RL: incoherent exploration, interface mismatch, and long-rollout errors" width="2540" height="856" loading="lazy" decoding="async"></a>
+        </figure>
+        <figure class="paper-figure">
+          <figcaption>I-WoVR</figcaption>
+          <a href="assets/figures/extensions-iwovr.png" target="_blank" rel="noopener" aria-label="Open I-WoVR: coherent exploration, a multi-view interface, and stage-local imagined training at full resolution"><img src="assets/figures/extensions-iwovr.png" alt="I-WoVR: coherent exploration, a multi-view interface, and stage-local imagined training" width="2540" height="1036" loading="lazy" decoding="async"></a>
+        </figure>
+      </div>
+      <ul class="extension-list">
+        <li><strong>Extended and redesigned.</strong> We retain first-frame anchoring and extend it to an anchored sparse history. The single-view, delta-EEF formulation with vector action conditioning is replaced by a VLA-aligned multi-view interface with absolute joint-and-gripper commands, geometry-grounded action and camera conditioning, and command-based proprioceptive updates.</li>
+        <li><strong>New.</strong> Chunk-wise Flow-SDE exploration preserves the marginal exploration scale while enforcing temporal coherence across neighboring absolute-action targets.</li>
+        <li><strong>Broadened in scope.</strong> We carry KIR’s reset-based principle from task-critical regions into long-horizon, multi-stage optimization, combining data-supported stage-entry resets, stage-specific rewards, local rollout horizons, and controllable stage sampling.</li>
+        <li><strong>Orthogonal prior component.</strong> PACE in WoVR addresses policy-model recalibration under policy-induced distribution shift. In this work, the world model remains fixed during policy optimization to isolate the effects of interface design, exploration, and rollout organization.</li>
+      </ul>
+    </section>
+    <hr>
+    <section id="method" aria-labelledby="method-title">
+      <h2 id="method-title">Methodology</h2>
+      <article class="method-block" id="method-world-model" aria-labelledby="world-model-title">
+        <h3 id="world-model-title">VLA-Aligned Multi-View World Model</h3>
+        <figure class="paper-figure">
+          <a href="assets/figures/method-world-model.png" target="_blank" rel="noopener" aria-label="Open the multi-view world-model architecture at full resolution"><img src="assets/figures/method-world-model.png" alt="Multi-view world model: action maps, camera ray maps, and view embeddings condition a parallel DiT control branch for head and wrist video prediction" width="2608" height="908" loading="lazy" decoding="async"></a>
+        </figure>
+        <ul class="method-points">
+          <li><strong>Geometry-grounded control.</strong> Absolute joint commands are projected into per-view action maps. Camera ray maps and view embeddings condition a parallel DiT control branch for synchronized head and wrist prediction.</li>
+          <li><strong>Closed-loop context.</strong> A persistent first-frame anchor and sparse recent history preserve scene context and task progress. Proprioceptive feedback is approximated from shifted joint-and-gripper commands.</li>
+          <li><strong>Robust and efficient rollouts.</strong> Geometry-aware context corruption and variable temporal strides prepare the model for recursive prediction, while DMD2 distillation enables one-step generation for higher-throughput imagined interaction.</li>
+        </ul>
+      </article>
+      <article class="method-block" id="method-exploration" aria-labelledby="exploration-title">
+        <h3 id="exploration-title">Temporally Coherent Exploration</h3>
+        <figure class="paper-figure">
+          <a href="assets/figures/method-chunkwise.png" target="_blank" rel="noopener" aria-label="Open the chunk-wise Flow-SDE exploration diagram at full resolution"><img src="assets/figures/method-chunkwise.png" alt="Chunk-wise Flow-SDE shares noise across an action chunk, producing temporally coherent deviations compared with independent noise" width="2722" height="964" loading="lazy" decoding="async"></a>
+        </figure>
+        <ul class="method-points">
+          <li><strong>Coherent perturbations.</strong> One noise vector is shared across temporal positions at a selected Flow-SDE step, avoiding independent perturbations of neighboring absolute-action targets.</li>
+          <li><strong>Preserved exploration scale.</strong> Each action token retains the same marginal Gaussian noise scale. The method reshapes temporal covariance instead of simply reducing exploration strength.</li>
+          <li><strong>Imagined policy improvement.</strong> The action chunks drive closed-loop VLA–world-model interaction, and grouped imagined returns provide advantages for GRPO policy optimization.</li>
+        </ul>
+      </article>
+      <article class="method-block" id="method-stage-local" aria-labelledby="stage-local-title">
+        <h3 id="stage-local-title">Stage-Local Imagination for Long-Horizon Manipulation</h3>
+        <figure class="paper-figure">
+          <a href="assets/figures/method-stage-local.png" target="_blank" rel="noopener" aria-label="Open the stage-local imagined training diagram at full resolution"><img src="assets/figures/method-stage-local.png" alt="Full-start rollouts under-cover later stages and accumulate generated prefixes; stage-entry resets provide direct access to every stage with short local rollouts" width="3176" height="1702" loading="lazy" decoding="async"></a>
+        </figure>
+        <ul class="method-points">
+          <li><strong>Direct access to every stage.</strong> GRPO rollout groups start from recorded stage-entry states and observation histories. Balanced stage sampling provides training opportunities without replaying preceding skills.</li>
+          <li><strong>Local learning signals.</strong> Stage-specific completion rewards and short rollout horizons reduce reward sparsity and avoid long cross-stage generated prefixes. Steps after stage completion are masked.</li>
+          <li><strong>One end-to-end policy.</strong> All stages optimize the same VLA policy. Resets organize imagined training only; at deployment, the policy executes the complete task continuously without resets.</li>
+        </ul>
+      </article>
+    </section>
+    <hr>
+    <section id="results" aria-labelledby="results-title">
+      <h2 id="results-title">Results</h2>
+      <article class="result-block" id="results-fidelity" aria-labelledby="fidelity-title">
+        <h3 id="fidelity-title">Multi-View Prediction Fidelity and Efficiency</h3>
+        <div class="result-table-wrap" role="region" aria-label="Video prediction quality table; scroll horizontally on smaller screens" tabindex="0">
+          <table class="result-table fidelity-table" id="fidelity-table" aria-describedby="fidelity-note">
+            <caption>Video prediction quality and generation speed</caption>
+            <thead>
+              <tr><th rowspan="2" scope="col">Method</th><th rowspan="2" scope="col">NFE</th><th colspan="5" scope="colgroup">Head View</th><th colspan="5" scope="colgroup">Wrist Views</th><th rowspan="2" scope="col">FPS↑</th></tr>
+              <tr><th scope="col">LPIPS↓</th><th scope="col">FID↓</th><th scope="col">FVD↓</th><th scope="col">SSIM↑</th><th scope="col">PSNR↑</th><th scope="col">LPIPS↓</th><th scope="col">FID↓</th><th scope="col">FVD↓</th><th scope="col">SSIM↑</th><th scope="col">PSNR↑</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">WoVR (single view)</th><td>5</td><td>0.182</td><td><span class="second-best">20.74</span></td><td>75.09</td><td>0.858</td><td>19.12</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>22.56</td></tr>
+              <tr><th scope="row">WoVR (three views)</th><td>5</td><td>0.231</td><td>27.01</td><td>109.33</td><td>0.825</td><td>16.96</td><td>0.269</td><td>47.55</td><td>124.41</td><td>0.825</td><td>23.16</td><td>14.01</td></tr>
+              <tr><th scope="row">Ctrl-World</th><td>5</td><td>0.318</td><td>73.22</td><td>229.83</td><td>0.812</td><td>16.39</td><td>0.350</td><td>117.45</td><td>305.39</td><td>0.863</td><td>22.38</td><td>4.16</td></tr>
+              <tr><th scope="row">Ctrl-World</th><td>50</td><td>0.305</td><td>47.16</td><td>147.46</td><td>0.802</td><td>15.86</td><td>0.346</td><td>73.67</td><td>186.66</td><td>0.849</td><td>22.14</td><td>0.53</td></tr>
+              <tr><th scope="row">EVAC</th><td>27</td><td>0.337</td><td>50.93</td><td>196.72</td><td>0.768</td><td>13.76</td><td>0.328</td><td>68.49</td><td>185.15</td><td>0.833</td><td>20.89</td><td>1.71</td></tr>
+              <tr class="ours"><th scope="row">I-WoVR</th><td>5</td><td><strong>0.148</strong></td><td>22.45</td><td>62.16</td><td><strong>0.883</strong></td><td><strong>22.28</strong></td><td><span class="second-best">0.204</span></td><td><span class="second-best">44.10</span></td><td><span class="second-best">81.33</span></td><td><strong>0.894</strong></td><td><strong>29.77</strong></td><td>9.41</td></tr>
+              <tr class="ours"><th scope="row">I-WoVR</th><td>50</td><td><span class="second-best">0.153</span></td><td><strong>19.92</strong></td><td><strong>49.61</strong></td><td><span class="second-best">0.877</span></td><td>21.86</td><td><strong>0.203</strong></td><td><strong>35.96</strong></td><td><strong>65.77</strong></td><td>0.888</td><td><span class="second-best">29.39</span></td><td>1.78</td></tr>
+              <tr class="ours"><th scope="row">I-WoVR-DMD</th><td>1</td><td>0.163</td><td>23.59</td><td><span class="second-best">57.41</span></td><td><span class="second-best">0.877</span></td><td><span class="second-best">22.20</span></td><td>0.236</td><td>53.58</td><td>106.15</td><td><span class="second-best">0.889</span></td><td>28.79</td><td>15.03</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small result-note" id="fidelity-note">Wrist metrics are averaged over the two wrist cameras. Best and second-best quality scores are shown in <strong>bold</strong> and <span class="second-best">underlined</span>, respectively. “–” denotes an unavailable view. NFE: number of function evaluations; FPS: generated frames per second.</p>
+      </article>
+
+      <article class="result-block" id="results-policy-utility" aria-labelledby="policy-utility-title">
+        <h3 id="policy-utility-title">Policy-Level Utility of the Learned Environment</h3>
+        <figure class="paper-figure result-figure correlation-figure">
+          <a href="assets/figures/results-policy-correlation.png" target="_blank" rel="noopener" aria-label="Open Real-robot and world-model success-rate correlation at full resolution"><img src="assets/figures/results-policy-correlation.png" alt="Real-robot and world-model success-rate correlation" width="1260" height="906" loading="lazy" decoding="async"></a>
+          <figcaption>Success rates across six task–policy pairs, with 120 real-robot and 120 imagined rollouts per pair.</figcaption>
+        </figure>
+        <p>World-model success rates track real-robot performance across the evaluated policies and tasks (<strong>Pearson r = 0.941; Spearman ρ = 0.943</strong>).</p>
+        <p><strong>Synthetic trajectories also improve behavior cloning.</strong> Mixing 480 success-filtered synthetic trajectories with 401 real trajectories improves WM-BC success from <strong>71.00% to 91.00%</strong> under fixed resets and from <strong>72.78% to 76.56%</strong> under randomized resets. The smaller randomized-reset gain indicates that filtered demonstrations provide useful, but incomplete, supervision.</p>
+      </article>
+
+      <article class="result-block" id="results-exploration" aria-labelledby="results-exploration-title">
+        <h3 id="results-exploration-title">Exploration in WM-RL</h3>
+        <div class="result-table-wrap compact-results-table" role="region" aria-label="Exploration noise success-rate table; scroll horizontally on smaller screens" tabindex="0">
+          <table class="result-table" id="exploration-table" aria-describedby="exploration-note">
+            <caption>Success rates (%) with chunk-wise and i.i.d. Flow-SDE noise</caption>
+            <thead>
+              <tr><th rowspan="2" scope="col">Exploration</th><th rowspan="2" scope="col">Updates</th><th colspan="2" scope="colgroup">Adjust Bottle</th><th colspan="2" scope="colgroup">Click Bell</th></tr>
+              <tr><th scope="col">Fixed</th><th scope="col">Random</th><th scope="col">Fixed</th><th scope="col">Random</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Initial SFT</th><td>0</td><td>79.00</td><td>70.70</td><td>71.00</td><td>72.78</td></tr>
+              <tr class="group-start"><th scope="row">Chunk-wise</th><td>10</td><td>76.00</td><td>76.95</td><td>87.00</td><td>81.25</td></tr>
+              <tr><th scope="row">Chunk-wise</th><td>20</td><td>80.00</td><td>80.86</td><td>89.00</td><td>86.72</td></tr>
+              <tr><th scope="row">Chunk-wise</th><td>30</td><td>85.00</td><td>86.33</td><td>87.00</td><td>86.33</td></tr>
+              <tr><th scope="row">Chunk-wise</th><td>40</td><td>86.00</td><td>88.28</td><td>88.00</td><td>89.45</td></tr>
+              <tr class="ours"><th scope="row">Chunk-wise</th><td><strong>50</strong></td><td><strong>93.00</strong></td><td><strong>91.80</strong></td><td><strong>92.00</strong></td><td><strong>93.75</strong></td></tr>
+              <tr class="group-start"><th scope="row">I.I.D.</th><td>10</td><td>72.00</td><td>65.63</td><td>78.00</td><td>75.78</td></tr>
+              <tr><th scope="row">I.I.D.</th><td>20</td><td>73.00</td><td>77.34</td><td>71.00</td><td>68.36</td></tr>
+              <tr><th scope="row">I.I.D.</th><td>30</td><td>77.00</td><td>78.52</td><td>72.00</td><td>74.22</td></tr>
+              <tr><th scope="row">I.I.D.</th><td>40</td><td>70.00</td><td>68.36</td><td>81.00</td><td>74.61</td></tr>
+              <tr><th scope="row">I.I.D.</th><td>50</td><td>77.00</td><td>74.22</td><td>89.00</td><td>86.33</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small result-note" id="exploration-note">Fixed evaluation uses 100 shared initial states. The initial policy, world model, reward model, rollout budget, and GRPO configuration are held constant.</p>
+        <figure class="paper-figure result-figure">
+          <a href="assets/figures/results-eef-coverage.png" target="_blank" rel="noopener" aria-label="Open Executed EEF workspace under i.i.d. and chunk-wise noise at full resolution"><img src="assets/figures/results-eef-coverage.png" alt="Executed EEF workspace under i.i.d. and chunk-wise noise" width="3883" height="1559" loading="lazy" decoding="async"></a>
+          <figcaption>Executed end-effector swept workspace on Click Bell. Columns increase the noise scale from 0.1 to 0.5; rows compare i.i.d. and chunk-wise exploration.</figcaption>
+        </figure>
+        <p>Chunk-wise exploration achieves higher final success rates in both tasks and both evaluation settings. At larger noise scales, it also produces broader executed EEF coverage, turning exploratory perturbations into coherent motion rather than high-frequency fluctuations.</p>
+      </article>
+
+      <article class="result-block" id="results-policy-optimization" aria-labelledby="policy-optimization-title">
+        <h3 id="policy-optimization-title">Policy Optimization with WM-RL</h3>
+        <div class="result-table-wrap compact-results-table" role="region" aria-label="RoboTwin policy success-rate table; scroll horizontally on smaller screens" tabindex="0">
+          <table class="result-table" id="simulation-table" aria-describedby="simulation-note">
+            <caption>VLA success rates on RoboTwin (%)</caption>
+            <thead>
+              <tr><th rowspan="2" scope="col">RL Environment</th><th colspan="2" scope="colgroup">Adjust Bottle</th><th colspan="2" scope="colgroup">Click Bell</th></tr>
+              <tr><th scope="col">Fixed</th><th scope="col">Random</th><th scope="col">Fixed</th><th scope="col">Random</th></tr>
+            </thead>
+            <tbody>
+              <tr class="view-group"><th colspan="5" scope="rowgroup">Single-view VLA</th></tr>
+              <tr><th scope="row">None (SFT)</th><td>68.00</td><td>58.98</td><td>59.00</td><td>40.63</td></tr>
+              <tr><th scope="row">Direct RL (matched)</th><td>69.00</td><td>60.16</td><td>60.00</td><td>37.89</td></tr>
+              <tr><th scope="row">Direct RL (converged)</th><td>78.00</td><td>76.95</td><td>89.00</td><td>83.59</td></tr>
+              <tr><th scope="row">WoVR</th><td>69.00</td><td>63.67</td><td>77.00</td><td>68.36</td></tr>
+              <tr class="ours"><th scope="row">I-WoVR (1 view)</th><td>75.00</td><td>71.09</td><td>85.00</td><td>73.44</td></tr>
+              <tr class="view-group"><th colspan="5" scope="rowgroup">Multi-view VLA</th></tr>
+              <tr><th scope="row">None (SFT)</th><td>79.00</td><td>70.70</td><td>71.00</td><td>72.78</td></tr>
+              <tr><th scope="row">Direct RL (matched)</th><td>74.00</td><td>68.62</td><td>82.00</td><td>79.30</td></tr>
+              <tr><th scope="row">Direct RL (converged)</th><td>95.00</td><td>94.43</td><td>99.00</td><td>98.83</td></tr>
+              <tr><th scope="row">WoVR (3 views)</th><td>90.00</td><td>83.20</td><td>92.00</td><td>90.63</td></tr>
+              <tr><th scope="row">Ctrl-World</th><td>79.00</td><td>76.57</td><td>84.00</td><td>78.52</td></tr>
+              <tr class="ours"><th scope="row">I-WoVR</th><td>93.00</td><td>91.80</td><td>92.00</td><td>93.75</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small result-note" id="simulation-note">Fixed: 100 shared initial states; Random: 256 random states. Direct RL (matched) uses a matched online-interaction budget; Direct RL (converged) is trained without that budget constraint.</p>
+        <p>I-WoVR improves policy performance on both RoboTwin tasks and outperforms budget-matched Direct RL under both view configurations, approaching the unconstrained converged baseline.</p>
+        <figure class="result-figure robot-result-figure" id="real-robot-results" aria-label="Real-world multi-task success rates">
+          <div class="robot-chart-toolbar">
+            <span class="small">Success rate (%)</span>
+            <div class="legend" aria-label="Policy legend">
+              <div class="item"><span class="swatch robot-sft-swatch" aria-hidden="true"></span>SFT</div>
+              <div class="item"><span class="swatch robot-ours-swatch" aria-hidden="true"></span>I-WoVR (50 WM-RL updates)</div>
+            </div>
+          </div>
+          <div class="robot-chart-grid" id="real-robot-charts"></div>
+          <noscript><img src="assets/figures/results-real-robot.png" alt="SFT and I-WoVR success rates: button 15% and 45%; bottle 60% and 70%; test tube 35% and 55%; flower 55% and 70%; cup 55% and 60%; towel 15% and 35%; average 39.2% and 55.8%." width="2623" height="864"></noscript>
+          <figcaption>One shared policy; 20 matched real-robot evaluations per task. Error bars are retained from the paper.</figcaption>
+        </figure>
+        <p>After 50 WM-RL updates with no further real-robot data collection, success improves on all six tasks. The average rises from <strong>39.2% to 55.8%</strong>.</p>
+      </article>
+
+      <article class="result-block" id="results-long-horizon" aria-labelledby="long-horizon-title">
+        <h3 id="long-horizon-title">Long-Horizon Policy Learning</h3>
+        <figure class="result-figure phone-result-figure" id="phone-packaging-results" aria-label="Phone-packaging stage and end-to-end success">
+          <div class="phone-results-grid">
+            <div class="phone-stage-panel">
+              <h4>Conditional stage success</h4>
+              <div class="phone-stage-table-wrap">
+                <table class="phone-stage-table" aria-label="Conditional phone-packaging success by training variant and stage" aria-describedby="phone-results-note">
+                  <thead><tr><th scope="col">Training variant</th><th scope="col">Stage 1</th><th scope="col">Stage 2</th><th scope="col">Stage 3</th><th scope="col">Stage 4</th></tr></thead>
+                  <tbody>
+                  <tr><th scope="row">SFT</th><td class="phone-stage-cell" data-stage="1" data-successes="20" data-arrivals="20" style="--stage-color:rgb(157,175,253)"><strong>100.0%</strong><span>20/20</span></td><td class="phone-stage-cell" data-stage="2" data-successes="10" data-arrivals="20" style="--stage-color:rgb(201,211,253)"><strong>50.0%</strong><span>10/20</span></td><td class="phone-stage-cell" data-stage="3" data-successes="7" data-arrivals="10" style="--stage-color:rgb(183,197,253)"><strong>70.0%</strong><span>7/10</span></td><td class="phone-stage-cell" data-stage="4" data-successes="6" data-arrivals="7" style="--stage-color:rgb(169,185,253)"><strong>85.7%</strong><span>6/7</span></td></tr>
+                  <tr><th scope="row">Full-start<span>+ traj reward</span></th><td class="phone-stage-cell" data-stage="1" data-successes="20" data-arrivals="20" style="--stage-color:rgb(157,175,253)"><strong>100.0%</strong><span>20/20</span></td><td class="phone-stage-cell" data-stage="2" data-successes="11" data-arrivals="20" style="--stage-color:rgb(196,207,253)"><strong>55.0%</strong><span>11/20</span></td><td class="phone-stage-cell" data-stage="3" data-successes="11" data-arrivals="11" style="--stage-color:rgb(157,175,253)"><strong>100.0%</strong><span>11/11</span></td><td class="phone-stage-cell" data-stage="4" data-successes="10" data-arrivals="11" style="--stage-color:rgb(165,182,253)"><strong>90.9%</strong><span>10/11</span></td></tr>
+                  <tr><th scope="row">Full-start<span>+ stage reward</span></th><td class="phone-stage-cell" data-stage="1" data-successes="20" data-arrivals="20" style="--stage-color:rgb(157,175,253)"><strong>100.0%</strong><span>20/20</span></td><td class="phone-stage-cell" data-stage="2" data-successes="18" data-arrivals="20" style="--stage-color:rgb(166,182,253)"><strong>90.0%</strong><span>18/20</span></td><td class="phone-stage-cell" data-stage="3" data-successes="16" data-arrivals="18" style="--stage-color:rgb(167,183,253)"><strong>88.9%</strong><span>16/18</span></td><td class="phone-stage-cell" data-stage="4" data-successes="11" data-arrivals="16" style="--stage-color:rgb(184,197,253)"><strong>68.8%</strong><span>11/16</span></td></tr>
+                  <tr><th scope="row">KIR<span>(Stage4-only)</span></th><td class="phone-stage-cell" data-stage="1" data-successes="18" data-arrivals="20" style="--stage-color:rgb(166,182,253)"><strong>90.0%</strong><span>18/20</span></td><td class="phone-stage-cell" data-stage="2" data-successes="13" data-arrivals="18" style="--stage-color:rgb(181,195,253)"><strong>72.2%</strong><span>13/18</span></td><td class="phone-stage-cell" data-stage="3" data-successes="10" data-arrivals="13" style="--stage-color:rgb(177,192,253)"><strong>76.9%</strong><span>10/13</span></td><td class="phone-stage-cell" data-stage="4" data-successes="10" data-arrivals="10" style="--stage-color:rgb(157,175,253)"><strong>100.0%</strong><span>10/10</span></td></tr>
+                  <tr><th scope="row">Stage-reset<span>+ arrival-matched</span></th><td class="phone-stage-cell" data-stage="1" data-successes="20" data-arrivals="20" style="--stage-color:rgb(157,175,253)"><strong>100.0%</strong><span>20/20</span></td><td class="phone-stage-cell" data-stage="2" data-successes="18" data-arrivals="20" style="--stage-color:rgb(166,182,253)"><strong>90.0%</strong><span>18/20</span></td><td class="phone-stage-cell" data-stage="3" data-successes="18" data-arrivals="18" style="--stage-color:rgb(157,175,253)"><strong>100.0%</strong><span>18/18</span></td><td class="phone-stage-cell" data-stage="4" data-successes="4" data-arrivals="18" style="--stage-color:rgb(225,231,252)"><strong>22.2%</strong><span>4/18</span></td></tr>
+                  <tr class="phone-uniform"><th scope="row">Stage-reset<span>+ uniform</span></th><td class="phone-stage-cell" data-stage="1" data-successes="20" data-arrivals="20" style="--stage-color:rgb(157,175,253)"><strong>100.0%</strong><span>20/20</span></td><td class="phone-stage-cell" data-stage="2" data-successes="17" data-arrivals="20" style="--stage-color:rgb(170,186,253)"><strong>85.0%</strong><span>17/20</span></td><td class="phone-stage-cell" data-stage="3" data-successes="16" data-arrivals="17" style="--stage-color:rgb(162,179,253)"><strong>94.1%</strong><span>16/17</span></td><td class="phone-stage-cell" data-stage="4" data-successes="15" data-arrivals="16" style="--stage-color:rgb(162,179,253)"><strong>93.8%</strong><span>15/16</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="phone-heatmap-scale" aria-label="Conditional success color scale from zero to 100 percent"><span>0%</span><span class="phone-heatmap-gradient" aria-hidden="true"></span><span>100%</span></div>
+            </div>
+            <div class="phone-end-panel">
+              <h4>End-to-end success</h4>
+              <div class="phone-end-subtitle">All 20 trials</div>
+              <div class="phone-end-rows">
+                <div class="phone-end-row" data-method="SFT" data-successes="6" data-trials="20">
+                  <div class="phone-mobile-method">SFT</div>
+                  <svg viewBox="0 0 330 64" class="phone-end-chart" role="img" aria-label="SFT: 30% end-to-end success, 6 of 20 trials.">
+                    <g class="phone-end-grid" aria-hidden="true"><line x1="8" x2="8" y1="6" y2="58"/><line x1="63.00000000000001" x2="63.00000000000001" y1="6" y2="58"/><line x1="118.00000000000001" x2="118.00000000000001" y1="6" y2="58"/><line x1="173" x2="173" y1="6" y2="58"/><line x1="228.00000000000003" x2="228.00000000000003" y1="6" y2="58"/></g>
+                    <rect class="phone-end-bar" x="8" y="17" width="66" height="30" rx="5"/>
+                    <text x="83" y="37" class="phone-end-value" aria-hidden="true">30% <tspan class="phone-end-count">(6/20)</tspan></text>
+                  </svg>
+                </div>
+                <div class="phone-end-row" data-method="Full-start + traj reward" data-successes="10" data-trials="20">
+                  <div class="phone-mobile-method">Full-start<span>+ traj reward</span></div>
+                  <svg viewBox="0 0 330 64" class="phone-end-chart" role="img" aria-label="Full-start + traj reward: 50% end-to-end success, 10 of 20 trials.">
+                    <g class="phone-end-grid" aria-hidden="true"><line x1="8" x2="8" y1="6" y2="58"/><line x1="63.00000000000001" x2="63.00000000000001" y1="6" y2="58"/><line x1="118.00000000000001" x2="118.00000000000001" y1="6" y2="58"/><line x1="173" x2="173" y1="6" y2="58"/><line x1="228.00000000000003" x2="228.00000000000003" y1="6" y2="58"/></g>
+                    <rect class="phone-end-bar" x="8" y="17" width="110.00000000000001" height="30" rx="5"/>
+                    <text x="127.00000000000001" y="37" class="phone-end-value" aria-hidden="true">50% <tspan class="phone-end-count">(10/20)</tspan></text>
+                  </svg>
+                </div>
+                <div class="phone-end-row" data-method="Full-start + stage reward" data-successes="11" data-trials="20">
+                  <div class="phone-mobile-method">Full-start<span>+ stage reward</span></div>
+                  <svg viewBox="0 0 330 64" class="phone-end-chart" role="img" aria-label="Full-start + stage reward: 55% end-to-end success, 11 of 20 trials.">
+                    <g class="phone-end-grid" aria-hidden="true"><line x1="8" x2="8" y1="6" y2="58"/><line x1="63.00000000000001" x2="63.00000000000001" y1="6" y2="58"/><line x1="118.00000000000001" x2="118.00000000000001" y1="6" y2="58"/><line x1="173" x2="173" y1="6" y2="58"/><line x1="228.00000000000003" x2="228.00000000000003" y1="6" y2="58"/></g>
+                    <rect class="phone-end-bar" x="8" y="17" width="121.00000000000001" height="30" rx="5"/>
+                    <text x="138" y="37" class="phone-end-value" aria-hidden="true">55% <tspan class="phone-end-count">(11/20)</tspan></text>
+                  </svg>
+                </div>
+                <div class="phone-end-row" data-method="KIR (Stage4-only)" data-successes="10" data-trials="20">
+                  <div class="phone-mobile-method">KIR<span>(Stage4-only)</span></div>
+                  <svg viewBox="0 0 330 64" class="phone-end-chart" role="img" aria-label="KIR (Stage4-only): 50% end-to-end success, 10 of 20 trials.">
+                    <g class="phone-end-grid" aria-hidden="true"><line x1="8" x2="8" y1="6" y2="58"/><line x1="63.00000000000001" x2="63.00000000000001" y1="6" y2="58"/><line x1="118.00000000000001" x2="118.00000000000001" y1="6" y2="58"/><line x1="173" x2="173" y1="6" y2="58"/><line x1="228.00000000000003" x2="228.00000000000003" y1="6" y2="58"/></g>
+                    <rect class="phone-end-bar" x="8" y="17" width="110.00000000000001" height="30" rx="5"/>
+                    <text x="127.00000000000001" y="37" class="phone-end-value" aria-hidden="true">50% <tspan class="phone-end-count">(10/20)</tspan></text>
+                  </svg>
+                </div>
+                <div class="phone-end-row" data-method="Stage-reset + arrival-matched" data-successes="4" data-trials="20">
+                  <div class="phone-mobile-method">Stage-reset<span>+ arrival-matched</span></div>
+                  <svg viewBox="0 0 330 64" class="phone-end-chart" role="img" aria-label="Stage-reset + arrival-matched: 20% end-to-end success, 4 of 20 trials.">
+                    <g class="phone-end-grid" aria-hidden="true"><line x1="8" x2="8" y1="6" y2="58"/><line x1="63.00000000000001" x2="63.00000000000001" y1="6" y2="58"/><line x1="118.00000000000001" x2="118.00000000000001" y1="6" y2="58"/><line x1="173" x2="173" y1="6" y2="58"/><line x1="228.00000000000003" x2="228.00000000000003" y1="6" y2="58"/></g>
+                    <rect class="phone-end-bar" x="8" y="17" width="44" height="30" rx="5"/>
+                    <text x="61" y="37" class="phone-end-value" aria-hidden="true">20% <tspan class="phone-end-count">(4/20)</tspan></text>
+                  </svg>
+                </div>
+                <div class="phone-end-row phone-uniform" data-method="Stage-reset + uniform" data-successes="15" data-trials="20">
+                  <div class="phone-mobile-method">Stage-reset<span>+ uniform</span></div>
+                  <svg viewBox="0 0 330 64" class="phone-end-chart" role="img" aria-label="Stage-reset + uniform: 75% end-to-end success, 15 of 20 trials.">
+                    <g class="phone-end-grid" aria-hidden="true"><line x1="8" x2="8" y1="6" y2="58"/><line x1="63.00000000000001" x2="63.00000000000001" y1="6" y2="58"/><line x1="118.00000000000001" x2="118.00000000000001" y1="6" y2="58"/><line x1="173" x2="173" y1="6" y2="58"/><line x1="228.00000000000003" x2="228.00000000000003" y1="6" y2="58"/></g>
+                    <rect class="phone-end-bar" x="8" y="17" width="165" height="30" rx="5"/>
+                    <text x="182" y="37" class="phone-end-value" aria-hidden="true">75% <tspan class="phone-end-count">(15/20)</tspan></text>
+                  </svg>
+                </div>
+              </div>
+              <svg viewBox="0 0 330 28" class="phone-end-axis" aria-hidden="true">
+                <text x="8" y="18" text-anchor="middle">0</text><text x="63.00000000000001" y="18" text-anchor="middle">25</text><text x="118.00000000000001" y="18" text-anchor="middle">50</text><text x="173" y="18" text-anchor="middle">75</text><text x="228.00000000000003" y="18" text-anchor="middle">100</text>
+              </svg>
+            </div>
+          </div>
+          <figcaption id="phone-results-note">Stage success is conditional on reaching that stage; fractions show successes / arrivals. End-to-end success is measured over all 20 trials, without intermediate resets.</figcaption>
+        </figure>
+        <p>Uniform stage-reset training reaches <strong>75% end-to-end success (15/20)</strong>, compared with 30% for SFT, 50% for full-start training with trajectory rewards, and 55% with stage-wise rewards. Arrival-matched stage sampling reaches only 20%, highlighting the importance of balanced training opportunities across stages.</p>
+      </article>
+    </section>
+    <hr>
+    <section id="abstract" aria-labelledby="abstract-title"><h2 id="abstract-title">Abstract</h2><p class="small">Full abstract coming soon.</p></section>
+    <section id="citation" aria-labelledby="citation-title"><h2 id="citation-title">Citation &amp; Resources</h2><p class="small">Paper, code, and citation details coming soon.</p></section>
+    <footer class="footer">I-WoVR · Website styling adapted from <a href="https://opendrivelab.com/RISE/" target="_blank" rel="noopener">RISE</a>.</footer>
+  </main>
+  <a class="back-to-top" id="back-to-top" href="#top" aria-label="Back to top">↑</a>
+  <dialog class="video-dialog" id="video-dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><h2 id="dialog-title">Robot execution</h2><button class="btn" id="close-dialog" type="button" aria-label="Close enlarged video">Close ×</button></div><video id="dialog-video" muted playsinline controls controlslist="noplaybackrate"></video></dialog>
+</body>
+</html>
