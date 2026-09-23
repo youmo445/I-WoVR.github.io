@@ -12,7 +12,11 @@
   const internalPause = new WeakSet();
   let modalSource = null;
   let heroVisible = true;
-  const tryPlay = video => { const promise = video.play(); if (promise) promise.catch(() => {}); };
+  const tryPlay = video => {
+    if (video.closest('[hidden]')) return;
+    const promise = video.play();
+    if (promise) promise.catch(() => {});
+  };
   const setSpeed = video => {
     if (video.defaultPlaybackRate !== SPEED) video.defaultPlaybackRate = SPEED;
     if (video.playbackRate !== SPEED) video.playbackRate = SPEED;
@@ -36,7 +40,7 @@
   for (const video of demoVideos) {
     video.addEventListener('pause', () => {
       if (internalPause.has(video)) internalPause.delete(video);
-      else if (visible.has(video) && !dialog.open && !document.hidden) pausedByUser.add(video);
+      else if (visible.has(video) && !video.closest('[hidden]') && !dialog.open && !document.hidden) pausedByUser.add(video);
     });
     video.addEventListener('play', () => pausedByUser.delete(video));
     video.addEventListener('error', () => {
@@ -51,7 +55,7 @@
   }
   const observer = new IntersectionObserver(entries => {
     for (const {target:video,isIntersecting} of entries) {
-      if (isIntersecting) {
+      if (isIntersecting && !video.closest('[hidden]')) {
         visible.add(video);
         loadVideo(video);
         if (!reducedMotion && !pausedByUser.has(video) && !dialog.open && !document.hidden) tryPlay(video);
@@ -62,6 +66,15 @@
     }
   }, {threshold:0.25});
   demoVideos.forEach(video => observer.observe(video));
+  document.addEventListener('replaygroupchange', () => {
+    // Tab changes are automatic pauses, not user requests to stop playback.
+    demoVideos.forEach(video => {
+      if (video.closest('[hidden]')) {
+        visible.delete(video);
+        pauseQuietly(video);
+      }
+    });
+  });
   hero.addEventListener('loadedmetadata', () => { if (reducedMotion) hero.pause(); });
   if (reducedMotion) hero.pause();
   new IntersectionObserver(([entry]) => {

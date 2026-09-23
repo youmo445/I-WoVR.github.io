@@ -10,6 +10,8 @@ Serve the repository root with any static HTTP server. No package installation o
 
 All asset paths are relative, so the site supports GitHub Pages project URLs. Videos play at a fixed 2x rate. The six-task success charts and phone-packaging results are rendered natively in the browser.
 
+The same-action GT / I-WoVR world-model replay section follows Abstract. It contains 20 uncaptioned comparison videos: RoboTwin Random (the default group), RoboTwin Clean, six real-world tasks, and four phone-packaging stages. Each pair shows GT on the left and world-model replay on the right, with head and two wrist views arranged vertically.
+
 ## GitHub Pages
 
 In **Settings > Pages**, choose **Deploy from a branch**, then select **main** and **/(root)**. The `.nojekyll` file serves the static site without a Jekyll build.

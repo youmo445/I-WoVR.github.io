@@ -11,6 +11,19 @@ section, .task-comparison, #recovery { scroll-margin-top: 84px; }
 .task-comparison { margin-top: 28px; }
 .clip-label { color: var(--navy); font-size: 14px; font-weight: 700; margin-bottom: 8px; }
 .playback-note { margin-top: 0; }
+.replay-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 24px; }
+.replay-tab { background: white; color: var(--navy); border: 1px solid var(--rule); border-radius: 4px; padding: 8px 16px; font-size: 14px; line-height: 1.5; }
+.replay-tab:hover { border-color: var(--navy); }
+.replay-tab[aria-selected="true"] { background: var(--navy); border-color: var(--navy); color: white; }
+.replay-panel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
+.replay-panel[hidden] { display: none; }
+.replay-card { min-width: 0; }
+.replay-card h3 { margin: 0 0 14px; }
+.media.video-frame.replay-frame { aspect-ratio: 8 / 9; }
+@media (max-width: 700px) {
+  .replay-panel { grid-template-columns: minmax(0, 1fr); }
+  .replay-tab { padding: 8px 12px; }
+}
 .hero-video::after {
   background: linear-gradient(180deg, rgba(0,0,0,.30) 0%, rgba(0,0,0,.12) 42%, rgba(0,0,0,0) 68%, rgba(255,255,255,0) 94%, rgba(255,255,255,.90) 100%);
 }

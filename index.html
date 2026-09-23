@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/project.css">
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/replay-tabs.js" defer></script>
   <script src="assets/js/real-robot-chart.js" defer></script>
 </head>
 <body>
@@ -25,6 +26,7 @@
         <a class="nav-link" href="#method">Method</a>
         <a class="nav-link" href="#results">Results</a>
         <a class="nav-link" href="#abstract">Abstract</a>
+        <a class="nav-link" href="#wm-replay">WM Replay</a>
       </nav>
       <div class="spacer"></div>
     </div></div>
@@ -435,6 +437,165 @@
     </section>
     <hr>
     <section id="abstract" aria-labelledby="abstract-title"><h2 id="abstract-title">Abstract</h2><p class="small">Full abstract coming soon.</p></section>
+    <section id="wm-replay" aria-labelledby="wm-replay-title">
+      <h2 id="wm-replay-title">GT vs. I-WoVR World Model: Same-Action Replay</h2>
+      <p>Ground-truth (GT) videos on the left; I-WoVR world-model predictions on the right, replaying the same recorded actions from the same initial observation.</p>
+      <p class="small">Head, left wrist, and right wrist views, top to bottom. Videos shown at 2× speed.</p>
+      <div class="replay-tabs" role="tablist" aria-label="Replay domains">
+        <button class="replay-tab" id="tab-robotwin-randomized" type="button" role="tab" aria-selected="true" aria-controls="panel-robotwin-randomized" tabindex="0">RoboTwin Random</button>
+        <button class="replay-tab" id="tab-robotwin-clean" type="button" role="tab" aria-selected="false" aria-controls="panel-robotwin-clean" tabindex="-1">RoboTwin Clean</button>
+        <button class="replay-tab" id="tab-real-six" type="button" role="tab" aria-selected="false" aria-controls="panel-real-six" tabindex="-1">Real-World Six Tasks</button>
+        <button class="replay-tab" id="tab-phone" type="button" role="tab" aria-selected="false" aria-controls="panel-phone" tabindex="-1">Phone Packaging</button>
+      </div>
+      <div class="replay-panel" id="panel-robotwin-randomized" role="tabpanel" aria-labelledby="tab-robotwin-randomized">
+        <article class="replay-card">
+          <h3>Adjust Bottle</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-robotwin-randomized-episode2-video" data-src="assets/media/replay/robotwin-randomized-episode2-clean.mp4" poster="assets/media/replay/robotwin-randomized-episode2-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Adjust Bottle — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-robotwin-randomized-episode2-video" aria-label="Enlarge Adjust Bottle replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Beat Block with Hammer</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-robotwin-randomized-episode4-video" data-src="assets/media/replay/robotwin-randomized-episode4-clean.mp4" poster="assets/media/replay/robotwin-randomized-episode4-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Beat Block with Hammer — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-robotwin-randomized-episode4-video" aria-label="Enlarge Beat Block with Hammer replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Rank Blocks by Color</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-robotwin-randomized-episode6-video" data-src="assets/media/replay/robotwin-randomized-episode6-clean.mp4" poster="assets/media/replay/robotwin-randomized-episode6-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Rank Blocks by Color — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-robotwin-randomized-episode6-video" aria-label="Enlarge Rank Blocks by Color replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Rank Blocks by Size</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-robotwin-randomized-episode8-video" data-src="assets/media/replay/robotwin-randomized-episode8-clean.mp4" poster="assets/media/replay/robotwin-randomized-episode8-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Rank Blocks by Size — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-robotwin-randomized-episode8-video" aria-label="Enlarge Rank Blocks by Size replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Click Alarm Clock</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-robotwin-randomized-episode10-video" data-src="assets/media/replay/robotwin-randomized-episode10-clean.mp4" poster="assets/media/replay/robotwin-randomized-episode10-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Click Alarm Clock — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-robotwin-randomized-episode10-video" aria-label="Enlarge Click Alarm Clock replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+      </div>
+      <div class="replay-panel" id="panel-robotwin-clean" role="tabpanel" aria-labelledby="tab-robotwin-clean" hidden>
+        <article class="replay-card">
+          <h3>Adjust Bottle</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-robotwin-clean-episode1-video" data-src="assets/media/replay/robotwin-clean-episode1-clean.mp4" poster="assets/media/replay/robotwin-clean-episode1-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Adjust Bottle — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-robotwin-clean-episode1-video" aria-label="Enlarge Adjust Bottle replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Beat Block with Hammer</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-robotwin-clean-episode3-video" data-src="assets/media/replay/robotwin-clean-episode3-clean.mp4" poster="assets/media/replay/robotwin-clean-episode3-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Beat Block with Hammer — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-robotwin-clean-episode3-video" aria-label="Enlarge Beat Block with Hammer replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Rank Blocks by Color</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-robotwin-clean-episode5-video" data-src="assets/media/replay/robotwin-clean-episode5-clean.mp4" poster="assets/media/replay/robotwin-clean-episode5-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Rank Blocks by Color — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-robotwin-clean-episode5-video" aria-label="Enlarge Rank Blocks by Color replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Rank Blocks by Size</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-robotwin-clean-episode7-video" data-src="assets/media/replay/robotwin-clean-episode7-clean.mp4" poster="assets/media/replay/robotwin-clean-episode7-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Rank Blocks by Size — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-robotwin-clean-episode7-video" aria-label="Enlarge Rank Blocks by Size replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Click Alarm Clock</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-robotwin-clean-episode9-video" data-src="assets/media/replay/robotwin-clean-episode9-clean.mp4" poster="assets/media/replay/robotwin-clean-episode9-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Click Alarm Clock — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-robotwin-clean-episode9-video" aria-label="Enlarge Click Alarm Clock replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+      </div>
+      <div class="replay-panel" id="panel-real-six" role="tabpanel" aria-labelledby="tab-real-six" hidden>
+        <article class="replay-card">
+          <h3>Towel Folding</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-real-task-0-episode-000001-video" data-src="assets/media/replay/real-task-0-episode-000001-clean.mp4" poster="assets/media/replay/real-task-0-episode-000001-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Towel Folding — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-real-task-0-episode-000001-video" aria-label="Enlarge Towel Folding replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Flower Insertion</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-real-task-1-episode-000040-video" data-src="assets/media/replay/real-task-1-episode-000040-clean.mp4" poster="assets/media/replay/real-task-1-episode-000040-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Flower Insertion — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-real-task-1-episode-000040-video" aria-label="Enlarge Flower Insertion replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Test-Tube Transfer</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-real-task-2-episode-000081-video" data-src="assets/media/replay/real-task-2-episode-000081-clean.mp4" poster="assets/media/replay/real-task-2-episode-000081-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Test-Tube Transfer — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-real-task-2-episode-000081-video" aria-label="Enlarge Test-Tube Transfer replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Button Pressing</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-real-task-3-episode-000120-video" data-src="assets/media/replay/real-task-3-episode-000120-clean.mp4" poster="assets/media/replay/real-task-3-episode-000120-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Button Pressing — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-real-task-3-episode-000120-video" aria-label="Enlarge Button Pressing replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Paper Cup Stacking</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-real-task-4-episode-000160-video" data-src="assets/media/replay/real-task-4-episode-000160-clean.mp4" poster="assets/media/replay/real-task-4-episode-000160-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Paper Cup Stacking — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-real-task-4-episode-000160-video" aria-label="Enlarge Paper Cup Stacking replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Bottle Uprighting</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-real-task-5-episode-000200-video" data-src="assets/media/replay/real-task-5-episode-000200-clean.mp4" poster="assets/media/replay/real-task-5-episode-000200-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Bottle Uprighting — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-real-task-5-episode-000200-video" aria-label="Enlarge Bottle Uprighting replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+      </div>
+      <div class="replay-panel" id="panel-phone" role="tabpanel" aria-labelledby="tab-phone" hidden>
+        <article class="replay-card">
+          <h3>Stage 1</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-phone-stage-1-episode-000001-video" data-src="assets/media/replay/phone-stage-1-episode-000001-clean.mp4" poster="assets/media/replay/phone-stage-1-episode-000001-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Stage 1 — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-phone-stage-1-episode-000001-video" aria-label="Enlarge Stage 1 replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Stage 2</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-phone-stage-2-episode-000103-video" data-src="assets/media/replay/phone-stage-2-episode-000103-clean.mp4" poster="assets/media/replay/phone-stage-2-episode-000103-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Stage 2 — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-phone-stage-2-episode-000103-video" aria-label="Enlarge Stage 2 replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Stage 3</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-phone-stage-3-episode-000200-video" data-src="assets/media/replay/phone-stage-3-episode-000200-clean.mp4" poster="assets/media/replay/phone-stage-3-episode-000200-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Stage 3 — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-phone-stage-3-episode-000200-video" aria-label="Enlarge Stage 3 replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+        <article class="replay-card">
+          <h3>Stage 4</h3>
+          <div class="media video-frame replay-frame">
+            <video class="demo-video" id="replay-phone-stage-4-episode-000304-video" data-src="assets/media/replay/phone-stage-4-episode-000304-clean.mp4" poster="assets/media/replay/phone-stage-4-episode-000304-clean.jpg" muted loop playsinline controls controlslist="noplaybackrate" preload="none" aria-label="Stage 4 — GT left, I-WoVR world-model replay right"></video>
+            <button class="expand-button" data-expand="replay-phone-stage-4-episode-000304-video" aria-label="Enlarge Stage 4 replay comparison" type="button">⤢</button>
+          </div>
+        </article>
+      </div>
+    </section>
     <section id="citation" aria-labelledby="citation-title"><h2 id="citation-title">Citation &amp; Resources</h2><p class="small">Paper, code, and citation details coming soon.</p></section>
     <footer class="footer">I-WoVR · Website styling adapted from <a href="https://opendrivelab.com/RISE/" target="_blank" rel="noopener">RISE</a>.</footer>
   </main>
