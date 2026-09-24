@@ -190,12 +190,12 @@
       <div class="challenge-grid" role="group" aria-label="From WoVR’s single-view setting to I-WoVR’s multi-view, long-horizon setting">
         <figure class="challenge-panel">
           <figcaption>WoVR</figcaption>
-          <a href="assets/figures/challenge-single-view.png" target="_blank" rel="noopener" aria-label="Open WoVR: single-view VLA with end-effector actions at full resolution"><img src="assets/figures/challenge-single-view.png" alt="WoVR: single-view VLA with end-effector actions" width="1050" height="1302" loading="lazy" decoding="async"></a>
+          <a href="assets/figures/challenge-single-view.png" target="_blank" rel="noopener" aria-label="Open WoVR: single-view VLA with end-effector actions at full resolution"><img src="assets/figures/challenge-single-view.png" alt="WoVR: single-view VLA with end-effector actions" width="1044" height="1164" loading="lazy" decoding="async"></a>
         </figure>
         <div class="challenge-transition" aria-hidden="true"><span>→</span><small>A broader<br>interaction setting</small></div>
         <figure class="challenge-panel">
           <figcaption>I-WoVR</figcaption>
-          <a href="assets/figures/challenge-multi-view.png" target="_blank" rel="noopener" aria-label="Open I-WoVR: multi-view observations, proprioception, joint actions, and long-horizon manipulation at full resolution"><img src="assets/figures/challenge-multi-view.png" alt="I-WoVR: multi-view observations, proprioception, joint actions, and long-horizon manipulation" width="1050" height="1296" loading="lazy" decoding="async"></a>
+          <a href="assets/figures/challenge-multi-view.png" target="_blank" rel="noopener" aria-label="Open I-WoVR: multi-view observations, proprioception, joint actions, and long-horizon manipulation at full resolution"><img src="assets/figures/challenge-multi-view.png" alt="I-WoVR: multi-view observations, proprioception, joint actions, and long-horizon manipulation" width="1044" height="1542" loading="lazy" decoding="async"></a>
         </figure>
       </div>
       <p>Extending the same hallucination-aware framework to modern VLAs requires synchronized head and wrist observations, proprioceptive feedback, and absolute joint actions. Longer tasks also require localized rewards and explicit control over how training opportunities are allocated across stages.</p>
@@ -302,10 +302,10 @@
       <article class="result-block" id="results-policy-utility" aria-labelledby="policy-utility-title">
         <h3 id="policy-utility-title">Policy-Level Utility of the Learned Environment</h3>
         <figure class="paper-figure result-figure correlation-figure">
-          <a href="assets/figures/results-policy-correlation.png" target="_blank" rel="noopener" aria-label="Open Real-robot and world-model success-rate correlation at full resolution"><img src="assets/figures/results-policy-correlation.png" alt="Real-robot and world-model success-rate correlation" width="1260" height="906" loading="lazy" decoding="async"></a>
+          <a href="assets/figures/results-policy-correlation.png" target="_blank" rel="noopener" aria-label="Open Real-robot and world-model success-rate correlation at full resolution"><img src="assets/figures/results-policy-correlation.png" alt="Real-robot and world-model success-rate correlation" width="1377" height="984" loading="lazy" decoding="async"></a>
           <figcaption>Success rates across six task–policy pairs, with 120 real-robot and 120 imagined rollouts per pair.</figcaption>
         </figure>
-        <p>World-model success rates track real-robot performance across the evaluated policies and tasks (<strong>Pearson r = 0.941; Spearman ρ = 0.943</strong>).</p>
+        <p>World-model success rates track real-robot performance across the evaluated policies and tasks (<strong>Pearson r = 0.970; Spearman ρ = 0.943</strong>).</p>
         <p><strong>Synthetic trajectories also improve behavior cloning.</strong> Mixing 480 success-filtered synthetic trajectories with 401 real trajectories improves WM-BC success from <strong>71.00% to 91.00%</strong> under fixed resets and from <strong>72.78% to 76.56%</strong> under randomized resets. The smaller randomized-reset gain indicates that filtered demonstrations provide useful, but incomplete, supervision.</p>
       </article>
 
