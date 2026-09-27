@@ -469,7 +469,13 @@
       </article>
     </section>
     <hr>
-    <section id="abstract" aria-labelledby="abstract-title"><h2 id="abstract-title">Abstract</h2><p class="small">Full abstract coming soon.</p></section>
+    <section id="abstract" aria-labelledby="abstract-title">
+      <h2 id="abstract-title">Abstract</h2>
+      <p>Action-conditioned world models (ACWMs) can reduce costly real-robot interaction in vision-language-action (VLA) reinforcement learning (RL). However, hallucinated outcomes and compounding prediction errors arising from closed-loop imagined rollouts can mislead policy optimization.</p>
+      <p>We present I-WoVR, a reliable world-model-based RL framework for post-training VLA policies under imperfect imagined dynamics. Rather than treating the world model as a faithful simulator, I-WoVR structures reliable closed-loop WM-RL around three complementary aspects: learned-environment construction, policy exploration, and imagined policy optimization.</p>
+      <p>At the <em>environment level</em>, we construct a VLA-aligned world model with explicit action and camera conditioning to provide multi-view prediction with proprioceptive update. At the <em>action-exploration level</em>, we introduce chunk-wise exploration for flow-based action-chunk policies, enabling more effective exploration while reducing unnecessary action jitter. At the <em>optimization level</em>, we introduce stage-local imagined training, which combines data-supported stage-entry resets, stage-specific rewards, local rollout horizons, and controllable stage sampling to avoid long generated prefixes and allocate direct optimization opportunities across task stages.</p>
+      <p>Experiments in simulation and on real robots evaluate prediction fidelity, policy-level utility, and downstream policy improvement. Compared to the corresponding SFT policies, I-WoVR improves success by 21.04% on two RoboTwin tasks and 16.7% across six real-robot tasks, and increases end-to-end success from 30% to 75% on phone packaging over one minute.</p>
+    </section>
     <section id="wm-replay" aria-labelledby="wm-replay-title">
       <h2 id="wm-replay-title">GT vs. I-WoVR World Model: Same-Action Replay</h2>
       <p>Ground-truth (GT) videos on the left; I-WoVR world-model predictions on the right, replaying the same recorded actions from the same initial observation.</p>
@@ -629,7 +635,6 @@
         </article>
       </div>
     </section>
-    <section id="citation" aria-labelledby="citation-title"><h2 id="citation-title">Citation &amp; Resources</h2><p class="small">Paper, code, and citation details coming soon.</p></section>
     <footer class="footer">I-WoVR · Website styling adapted from <a href="https://opendrivelab.com/RISE/" target="_blank" rel="noopener">RISE</a>.</footer>
   </main>
   <a class="back-to-top" id="back-to-top" href="#top" aria-label="Back to top">↑</a>
